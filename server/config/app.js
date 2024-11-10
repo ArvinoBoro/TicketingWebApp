@@ -8,6 +8,8 @@ let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
 let ticketsRouter = require('../routes/tickets');
 
+let Ticket = require('../models/ticket_model');
+
 let app = express();
 
 let mongoose = require('mongoose'); // Import the Mongoose module
