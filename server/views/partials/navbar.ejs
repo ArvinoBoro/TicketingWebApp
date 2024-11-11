@@ -8,13 +8,21 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
+          li class="nav-item">
+            <% if(title=="Home") { %>
+              <a class="nav-link active" href="/">
+            <% } else {%>
+              <a class="nav-link" href="/">
+            <% } %>  
+            <i class="fa-solid fa-house"></i> Home </a>
+          </li>
           <li class="nav-item">
-            <% if(title=="Tickets") { %>
+            <% if(title=="List") { %>
               <a class="nav-link active" href="/tickets">
             <% } else {%>
               <a class="nav-link" href="/tickets">
             <% } %>  
-            <i class="fa-solid fa-ticket"></i> View Tickets</a>
+            <i class="fa-solid fa-ticket"></i> View Ticket List</a>
           </li>
           <li class="nav-item">
             <% if(title=="Add") { %>
