@@ -1,18 +1,41 @@
-<!-- Index - Dev -->
-<%- include Partials/navbar.ejs%>
+<%- include partials/navbar.ejs %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="@fortawesome/fontawesome-free/css/all.min.css">
-    <script src="/Script/app.js"></script>
-    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-  </head>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div class="container">
+      <h1 class="text-center"><%= title %></h1>
+
+      <div class="mt-4">
+        <h3>Welcome to the Ticketing Web Application!</h3>
+        <p>This is your one-stop solution to manage tickets.</p>
+
+        <!-- Instructions -->
+        <div class="alert alert-info">
+          <h5>Instructions:</h5>
+          <ul>
+            <li><strong>Create</strong> a new ticket by clicking the hero button below.</li>
+            <li><strong>View</strong> a list of all tickets by clicking "View Ticket List".</li>
+            <li><strong>Edit</strong> any ticket by selecting it from the list.</li>
+            <li><strong>Delete</strong> tickets that are no longer needed.</li>
+          </ul>
+        </div>
+        
+        <!-- Hero Button for Creating a New Ticket -->
+        <div class="text-center mt-4">
+          <a href="/add" class="btn btn-primary">
+            Create New Ticket
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+    <%- include partials/footer.ejs %>
   </body>
 </html>
+
