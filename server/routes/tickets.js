@@ -100,12 +100,12 @@ router.get('/delete/:id', async(req, res, next) => {
     try {
         let id=req.params.id;
         Ticket.deleteOne({_id:id}).then(() => {
-            res.redirect('tickets/list')
+            res.redirect('/tickets')
         })
     }
     catch(error) {
         console.error(err);
-        res.render('tickets/list',{
+        res.render('/tickets',{
             error:'Error on the server'
         })
     }
