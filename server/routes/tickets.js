@@ -4,7 +4,26 @@ let mongoose = require('mongoose');
 let Ticket = require('../models/ticket_model');
 
 /* Read Functionality - Dev */ 
-
+router.get('/view/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id;
+        // Fetch the ticket by its ID
+        const ticket = await Ticket.findById(id);  
+        
+        // If the ticket is found, render the view page and pass the ticket data
+        if (ticket) {
+            res.render('tickets/view', {
+                title: `View Ticket - ${ticket.Title}`,
+                ticket: ticket  // Pass the ticket details to the view
+            });
+        } else {
+            res.status(404).send('Ticket not found');
+        }
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+});
 
 /* Update Functionality - Arvin */
 router.get('/edit/:id', async(req, res, next) => { // Every profile or account has a specific token or ID that indicates specific privileges.
