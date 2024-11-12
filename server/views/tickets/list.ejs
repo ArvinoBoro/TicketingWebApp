@@ -2,6 +2,7 @@
 
 <%- include ../partials/header.ejs %>
 <%- include ../partials/navbar.ejs %>
+
 <main class="container">
     <div id="accordion">
         <div class="card">
@@ -11,32 +12,40 @@
                         <div class="col-3 text-center">Title</div>
                         <div class="col-3 text-center">Date and Time</div>
                         <div class="col-3 text-center">User</div>
-                        <div class="col-1 text-cetner">Priority</div>
+                        <div class="col-1 text-center">Priority</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <% for (let i = 0; i < TicketList.length; i++) { %>
         <div class="card">
             <div class="card-header">
-                <a class="collapsed btn container-fluid" data-bs-toggle="collapse" href="#collapse<% i %>">
+                <a class="collapsed btn container-fluid" data-bs-toggle="collapse" href="#collapse<%= i %>">
                     <div class="row">  
                         <div class="col-3 text-center"><%= TicketList[i].Title %></div>
                         <div class="col-3 text-center"><%= TicketList[i].Date %></div>
                         <div class="col-3 text-center"><%= TicketList[i].Username %></div>
-                        <div class="col-1 text-cetner"><%= TicketList[i].Priority %></div>
+                        <div class="col-1 text-center"><%= TicketList[i].Priority %></div>
                     </div>
                 </a>
             </div>
-            <div id="collapse<% i %>" class="collapse" data-bs-parent="#accordion">
+            <div id="collapse<%= i %>" class="collapse" data-bs-parent="#accordion">
                 <div class="card-body">
-                    <%= TicketList[i].Description %>
+                    <p><%= TicketList[i].Description %></p>
+                    <div class="text-end">
+                        <a href="/tickets/edit/<%= TicketList[i]._id %>" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i> Edit
+                        </a>
+                        <a href="/tickets/delete/<%= TicketList[i]._id %>" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     <% } %>
-</main> 
+</main>
 
-
-<%- include ../Partials/footer.ejs %>
+<%- include ../partials/footer.ejs %>
