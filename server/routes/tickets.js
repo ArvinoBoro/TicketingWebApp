@@ -40,7 +40,7 @@ router.post('/edit/:id', async(req, res, next) => {
         let id = req.params.id;
         let updatedTicket = Ticket({
             "_id": id,
-            "Tile": req.body.Title,
+            "Title": req.body.Title,
             "Description": req.body.Description,
             "Priority": req.body.Priority
         })
