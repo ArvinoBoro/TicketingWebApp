@@ -27,7 +27,7 @@ router.get('/edit/:id', async(req, res, next) => { // Every profile or account h
         const TicketToEdit = await Ticket.findById(id); // Mongoose query
         res.render('tickets/edit', { 
             title: 'Edit Ticket',
-            ticket: TicketToEdit // Send the document with the requested ID.
+            Ticket: TicketToEdit // Send the document with the requested ID.
         })
     }
     catch(err) {
@@ -44,8 +44,8 @@ router.post('/edit/:id', async(req, res, next) => {
             "Description": req.body.Description,
             "Priority": req.body.Priority
         })
-        Book.findByIdAndUpdate(id, updatedTicket).then(() => {
-            res.redirect('/list');
+        Ticket.findByIdAndUpdate(id, updatedTicket).then(() => {
+            res.redirect('/tickets');
         })
     }
     catch(err) {
