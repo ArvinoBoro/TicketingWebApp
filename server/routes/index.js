@@ -9,9 +9,6 @@ router.get('/', function(req, res, next) {
 router.get('/home', function(req, res, next) {
   res.render('index', { title: 'Home' });
 });
-router.get('/tickets', function(req, res, next) {
-  res.render('tickets/list', { title: 'List' });
-});
 router.get('/add', function(req, res, next) {
   res.render('tickets/add', { title: 'Add' });
 });

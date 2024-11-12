@@ -4,26 +4,20 @@ let mongoose = require('mongoose');
 let Ticket = require('../models/ticket_model');
 
 /* Read Functionality - Dev */ 
-router.get('/view/:id', async (req, res, next) => {
-    try {
-        const id = req.params.id;
-        // Fetch the ticket by its ID
-        const ticket = await Ticket.findById(id);  
-        
-        // If the ticket is found, render the view page and pass the ticket data
-        if (ticket) {
-            res.render('tickets/view', {
-                title: `View Ticket - ${ticket.Title}`,
-                ticket: ticket  // Pass the ticket details to the view
-            });
-        } else {
-            res.status(404).send('Ticket not found');
+router.get('/',async(req,res,next)=>{
+    try{
+        const TicketList = await Ticket.find();
+        res.render('tickets/list',{
+            title:'Ticket',
+            TicketList:TicketList
+        })}
+        catch(err){
+            console.error(err);
+            res.render('tickets/list',{
+                error:'Error on the server'
+            })
         }
-    } catch (err) {
-        console.error(err);
-        next(err);
-    }
-});
+        });
 
 /* Update Functionality - Arvin */
 router.get('/edit/:id', async(req, res, next) => { // Every profile or account has a specific token or ID that indicates specific privileges.
@@ -88,13 +82,13 @@ router.post('/add', async(req, res, next) => {
             "Date": new Date()  // [1] Creates a date object representing current Unix time. 
         });
         Ticket.create(newTicket).then(() => {
-            res.redirect('tickets/list');
+            res.redirect('/tickets');
         })
     }
     catch(err)
     {
         console.error(err);
-        res.render('tickets/list', {
+        res.render('/tickets', {
             error:'Error on the server'
         })
     }

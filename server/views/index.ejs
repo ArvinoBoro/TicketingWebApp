@@ -1,44 +1,10 @@
 <%- include('partials/header.ejs') %>
 <%- include('partials/navbar.ejs') %>
-
-<main class="container">
-  <div class="text-center">
-    <h1>Welcome to the Ticketing Web Application</h1>
+    <h1>Welcome to the Ticketing Web Application!</h1>
     <img src="/LOGO-TWA.JPG" alt="Site Logo" class="img-fluid" />
-    <p>Manage all your support tickets efficiently.</p>
+    <h3>Manage all your support tickets efficiently:<h3>
     <a href="/tickets/add" class="btn btn-primary btn-lg">Create New Ticket</a>
-  </div>
-
-  <h2 class="mt-5">Active Tickets</h2>
-
-  <!-- Ticket List Table -->
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Date</th>
-          <th>User</th>
-          <th>Priority</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% TicketList.forEach(ticket => { %>
-          <tr>
-            <td><%= ticket.Title %></td>
-            <td><%= ticket.Date %></td>
-            <td><%= ticket.Username %></td>
-            <td><%= ticket.Priority %></td>
-            <td>
-              <a href="/tickets/edit/<%= ticket._id %>" class="btn btn-warning btn-sm">Edit</a>
-              <a href="/tickets/delete/<%= ticket._id %>" class="btn btn-danger btn-sm">Delete</a>
-            </td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  </div>
-</main>
+    <a href="/tickets" class="btn btn-primary btn-lg">Manage Active Tickets</a>
+</body>
 
 <%- include('partials/footer.ejs') %>
