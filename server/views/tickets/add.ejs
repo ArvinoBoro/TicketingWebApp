@@ -1,1 +1,31 @@
 <!-- Add - Dev -->
+<!-- Add - Dev -->
+<%- include ../partials/header.ejs %>
+<%- include ../partials/navbar.ejs %>
+
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+            <!-- Form to add a new ticket -->
+            <form class="form" method="POST" action="/tickets/add">
+                <div class="form-group">
+                    <label for="nameTextField">Ticket Title</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter Ticket Title" name="Title" required>
+                </div>
+                <div class="form-group">
+                    <label for="descriptionTextArea">Description</label>
+                    <textarea class="form-control" id="descriptionTextArea" placeholder="Enter the Description" name="Description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="priorityTextField">Priority Level</label>
+                    <input type="text" class="form-control" id="priorityTextField" placeholder="Enter the Priority Value" name="Priority" required>
+                </div>
+                <button class="btn btn-primary" type="submit">Add Ticket<i class="fas fa-plus-circle"></i></button>  
+                <a href="/tickets" class="btn btn-warning">Cancel<i class="fas fa-undo"></i></a>    
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ../partials/footer.ejs %>
