@@ -1,41 +1,44 @@
-<%- include partials/navbar.ejs %>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-  </head>
-  <body>
-    <div class="container">
-      <h1 class="text-center"><%= title %></h1>
+<%- include('partials/header.ejs') %>
+<%- include('partials/navbar.ejs') %>
 
-      <div class="mt-4">
-        <h3>Welcome to the Ticketing Web Application!</h3>
-        <p>This is your one-stop solution to manage tickets.</p>
+<main class="container">
+  <div class="text-center">
+    <h1>Welcome to the Ticketing Web Application</h1>
+    <img src="/LOGO-TWA.JPG" alt="Site Logo" class="img-fluid" />
+    <p>Manage all your support tickets efficiently.</p>
+    <a href="/tickets/add" class="btn btn-primary btn-lg">Create New Ticket</a>
+  </div>
 
-        <!-- Instructions -->
-        <div class="alert alert-info">
-          <h5>Instructions:</h5>
-          <ul>
-            <li><strong>Create</strong> a new ticket by clicking the hero button below.</li>
-            <li><strong>View</strong> a list of all tickets by clicking "View Ticket List".</li>
-            <li><strong>Edit</strong> any ticket by selecting it from the list.</li>
-            <li><strong>Delete</strong> tickets that are no longer needed.</li>
-          </ul>
-        </div>
-        
-        <!-- Hero Button for Creating a New Ticket -->
-        <div class="text-center mt-4">
-          <a href="/add" class="btn btn-primary">
-            Create New Ticket
-          </a>
-        </div>
-      </div>
-    </div>
+  <h2 class="mt-5">Active Tickets</h2>
 
+  <!-- Ticket List Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Date</th>
+          <th>User</th>
+          <th>Priority</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% TicketList.forEach(ticket => { %>
+          <tr>
+            <td><%= ticket.Title %></td>
+            <td><%= ticket.Date %></td>
+            <td><%= ticket.Username %></td>
+            <td><%= ticket.Priority %></td>
+            <td>
+              <a href="/tickets/edit/<%= ticket._id %>" class="btn btn-warning btn-sm">Edit</a>
+              <a href="/tickets/delete/<%= ticket._id %>" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</main>
 
-    <%- include partials/footer.ejs %>
-  </body>
-</html>
-
+<%- include('partials/footer.ejs') %>
