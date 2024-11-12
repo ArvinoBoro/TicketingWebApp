@@ -4,20 +4,20 @@ let mongoose = require('mongoose');
 let Ticket = require('../models/ticket_model');
 
 /* Read Functionality - Dev */ 
-router.get('/',async(req,res,next)=>{
-    try{
+router.get('/', async(req, res, next) => {
+    try {
         const TicketList = await Ticket.find();
         res.render('tickets/list',{
-            title:'Ticket',
-            TicketList:TicketList
+            title: 'Ticket',
+            TicketList: TicketList
         })}
         catch(err){
             console.error(err);
-            res.render('tickets/list',{
-                error:'Error on the server'
+            res.render('tickets/list', {
+                error: 'Error on the server'
             })
         }
-        });
+});
 
 /* Update Functionality - Arvin */
 router.get('/edit/:id', async(req, res, next) => { // Every profile or account has a specific token or ID that indicates specific privileges.
