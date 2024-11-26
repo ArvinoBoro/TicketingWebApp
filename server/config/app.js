@@ -7,7 +7,7 @@ let session = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
 let localstrategy = passportLocal.Strategy;
-let flash = require(connect-flash);
+let flash = require('connect-flash');
 
 let indexRouter = require('../routes/index');
 let usersRouter = require('../routes/users');
@@ -41,6 +41,13 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+// create user model instance
+let userModel = require('../models/user_model');
+let user = userModel.User;
+
+// serialize and deserialize user info
+passport.serializeUser(user.serializeUser());
+passport.deserializeUser(user.deserializeUser());
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
