@@ -5,6 +5,15 @@ let Ticket = require('../models/ticket_model');
 
 /* Read Functionality - Dev */ 
 router.get('/', async(req, res, next) => {
+    if(!req.user) {
+        res.render('auth/login', {
+            title: 'Login',
+            message:req.flash('registerMessage'),
+            displayName: req.user ? req.user.displayName:''
+            });
+      } else {
+        return res.redirect('tickets/list');
+      }
     try {
         const TicketList = await Ticket.find();
         res.render('tickets/list',{
@@ -73,6 +82,7 @@ router.get('/add',async(req, res, next) => {
 });
 /* Create Operation --> Post route for processing the Add Page */
 router.post('/add', async(req, res, next) => {
+    
     try {
         let newTicket = Ticket({
             "Title": req.body.Title,

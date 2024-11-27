@@ -11,7 +11,16 @@ router.get('/home', (req, res, next) => {
   res.render('index', { title: 'Home' });
 });
 router.get('/add', (req, res, next) => {
-  res.render('tickets/add', { title: 'Add' });
+if(!req.user) {
+        res.render('auth/login', {
+            title: 'Login',
+            message:req.flash('registerMessage'),
+            displayName: req.user ? req.user.displayName:''
+            });
+      } else {
+        return res.redirect('tickets/list');
+      }
+    
 }); 
 
 
