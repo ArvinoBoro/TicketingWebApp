@@ -1,7 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose'); 
-let Ticket = require('../models/user_model');
+let User = require('../models/user_model');
 
 router.get('/register', (req, res, next) => {
   if(!req.user) {

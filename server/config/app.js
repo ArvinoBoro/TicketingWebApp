@@ -42,12 +42,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // create user model instance
-let userModel = require('../models/user_model');
-let user = userModel.User;
+let User = require('../models/user_model');
 
 // serialize and deserialize user info
-passport.serializeUser(user.serializeUser());
-passport.deserializeUser(user.deserializeUser());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
