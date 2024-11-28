@@ -12,10 +12,6 @@ router.get('/home', (req, res, next) => {
 displayName = req.user ? req.user.displayName : '';
   res.render('index', { title: 'Home' });
 });
-router.get('/add', (req, res, next) => {
-displayName = req.user ? req.user.displayName : '';
-  res.render('tickets/add', { title: 'Add' });
-}); 
 
 
 module.exports = router;

@@ -88,18 +88,18 @@ router.post('/edit/:id', async(req, res, next) => {
 
 
 
-router.get('/add',async(req, res, next) => {
+router.get('/add', async(req, res, next) => {
     displayName = req.user ? req.user.displayName : '';
     try {
         if(!req.user) {
-            req.redirect('/users/login');
+            res.redirect('/users/login');
+            console.log("Hello");
         } else {
             res.render('tickets/add', {
                 title: 'Add Ticket'
             });
         }
-    }
-    catch(err)
+    } catch(err)
     {
         console.error(err);
         res.render('tickets/list', {
