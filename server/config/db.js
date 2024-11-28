@@ -1,4 +1,6 @@
+require('dotenv').config();
+
 module.exports = {
-    "URI": "mongodb+srv://arvinziba963:6xDfbNbOlSpSGm4I@cluster0.kwwfy.mongodb.net/TicketingWebApp"
+    "URI": process.env.MONGODB_URI 
 }
 
