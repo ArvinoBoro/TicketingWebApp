@@ -5,7 +5,7 @@ let Ticket = require('../models/ticket_model');
 
 /* Read Functionality - Dev */ 
 router.get('/', async(req, res, next) => {
-    res.locals.displayName = req.user ? req.user.displayName : '';   
+    displayName = req.user ? req.user.displayName : '';
     try {
         const TicketList = await Ticket.find();
         res.render('tickets/list',{
@@ -22,7 +22,7 @@ router.get('/', async(req, res, next) => {
 
 /* Update Functionality - Arvin */
 router.get('/edit/:id', async(req, res, next) => { // Every profile or account has a specific token or ID that indicates specific privileges.
-    res.locals.displayName = req.user ? req.user.displayName : '';   
+    displayName = req.user ? req.user.displayName : '';
     try {
         const id = req.params.id;
         console.log(id);
@@ -60,7 +60,7 @@ router.post('/edit/:id', async(req, res, next) => {
 
 /* Create Functionality - Carson */
 router.get('/add',async(req, res, next) => {
-    res.locals.displayName = req.user ? req.user.displayName : '';   
+    displayName = req.user ? req.user.displayName : '';
     try {
         res.render('tickets/add', {
             title: 'Add Ticket'
