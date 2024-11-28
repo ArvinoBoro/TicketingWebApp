@@ -1,26 +1,5 @@
 
-      req.flash('loginMessage',
-        'AuthenticationError');
-         return res.redirect('/users/login');  // Redirect if login fails
-    }
-    req.login(user, (err) => {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect('/tickets');  // Redirect to home or dashboard after successful login
-    });
-  })(req, res, next);
-});
-
-// GET Logout
-router.get('/logout', (req, res) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect('/');  // Redirect to home page after logout
-  });
-});
+    
 
 
 router.get('/register', (req, res, next) => {
