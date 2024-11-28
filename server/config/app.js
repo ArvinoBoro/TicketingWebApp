@@ -44,6 +44,9 @@ app.use(passport.session());
 // create user model instance
 let User = require('../models/user_model');
 
+passport.use(new localstrategy(User.authenticate()));
+
+
 // serialize and deserialize user info
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());

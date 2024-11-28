@@ -16,6 +16,7 @@
             <% } %>  
             <i class="fa-solid fa-house"></i> Home </a>
           </li>
+          <% if(typeof displayName == 'string' && displayName) { %>
           <li class="nav-item">
             <% if(title=="List") { %>
               <a class="nav-link active" href="/tickets">
@@ -32,10 +33,11 @@
             <% } %>       
             <i class="fa-regular fa-square-plus"></i>Add Ticket</a>
           </li>
+          <% } %>
           <% if(typeof displayName == 'string' && displayName) { %>
               <li class="navbar-text">
               <i class="fas fa-lg fa-user"></i>
-              Welcome, <% displayName %> </li>
+              Welcome, <%= displayName %> </li>
               <li class="nav-item">
               <a href ="users/logout" class="nav-link">
               <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a> </li>

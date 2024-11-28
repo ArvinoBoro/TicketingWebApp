@@ -4,6 +4,7 @@ let router = express.Router();
 /* GET landing page. */
 
 router.get('/', (req, res, next) => {
+res.locals.displayName = req.user ? req.user.displayName : '';
   res.render('index', { title: 'Home' });
 });
 /* GET landing page. */
@@ -11,16 +12,8 @@ router.get('/home', (req, res, next) => {
   res.render('index', { title: 'Home' });
 });
 router.get('/add', (req, res, next) => {
-if(!req.user) {
-        res.render('auth/login', {
-            title: 'Login',
-            message:req.flash('registerMessage'),
-            displayName: req.user ? req.user.displayName:''
-            });
-      } else {
-        return res.redirect('tickets/list');
-      }
-    
+res.locals.displayName = req.user ? req.user.displayName : '';
+  res.render('tickets/add', { title: 'Add' });
 }); 
 
 
