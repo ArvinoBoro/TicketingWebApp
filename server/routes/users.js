@@ -1,30 +1,4 @@
-let express = require('express');
-let router = express.Router();
-let mongoose = require('mongoose'); 
-let User = require('../models/user_model');
-let passport = require('passport');
 
-router.get('/login', (req, res, next) => {
-  if(!req.user) {
-    res.render('auth/login', 
-      {
-        title: 'Login',
-        message: req.flash('loginMessage'),
-        displayName: req.user ? req.user.displayName:''
-        })
-  } 
-  else {
-    return res.redirect('/')
-  }
-});
-
-// POST Login (Authenticate)
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
-    if (err) {
-      return next(err);  // Handle errors
-    }
-    if (!user) {
       req.flash('loginMessage',
         'AuthenticationError');
          return res.redirect('/users/login');  // Redirect if login fails
