@@ -1,7 +1,109 @@
+/* General Body and Layout */
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Arial', sans-serif;  /* Use a clean, readable font */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;  /* Light background color for the page */
 }
 
-a {
-  color: #00B7FF;
+/* Container */
+.container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* Navbar */
+.navbar {
+  margin-bottom: 20px;
+}
+
+.navbar-nav {
+  font-size: 16px;  /* Ensures text is readable */
+}
+
+/* Navbar Links */
+.navbar .nav-link {
+  color: #fff !important;  /* White color for links */
+  text-transform: uppercase;  /* Make text all uppercase for uniformity */
+  padding: 10px 20px;  /* Adds padding for better button feel */
+  border-radius: 50px;  /* Round corners */
+  background-color: #28a745;  /* Green background */
+  transition: background-color 0.3s ease;  /* Smooth transition for background color change */
+}
+
+.navbar .nav-link:hover {
+  background-color: #218838 !important;  /* Darker green on hover */
+}
+
+/* Active Navbar Item */
+.navbar .nav-item.active .nav-link {
+  font-weight: bold;  /* Make the active navbar item bold */
+  background-color: #218838 !important;  /* Active green color */
+  color: #fff !important;
+}
+
+/* Button Styling */
+.btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 50px;  /* Rounded corners for buttons */
+  background-color: #28a745;  /* Green background */
+  border: none;
+  color: #fff;  /* White text color */
+  transition: background-color 0.3s ease;  /* Smooth background change */
+}
+
+.btn:hover {
+  background-color: #218838;  /* Darker green when hovered */
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 15px;  /* Spacing between form elements */
+}
+
+.form-control {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;  /* Light border for inputs */
+}
+
+.form-control:focus {
+  border-color: #007bff;  /* Blue border when focused */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);  /* Subtle focus effect */
+}
+
+/* Text Styling */
+h1, h3 {
+  font-weight: 600;
+  color: #333;  /* Dark color for headings */
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar {
+  width: 100%;
+  justify-content: center;  /* Centers the content horizontally */
+  padding: 10px 0;
+}
+
+.navbar-text {
+  text-align: center;  /* Centers text */
+  font-size: 14px;  /* Smaller font size */
+  color: #fff;  /* White text color */
+}
+
+/* Images */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
 }
