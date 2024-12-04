@@ -33,7 +33,10 @@ let User = mongoose.Schema({
         default: Date.now
     },
     githubId: {
-        type:String,
+        type:String
+    },
+    googleId: {
+        type:String
     }
 },
 {

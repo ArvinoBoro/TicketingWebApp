@@ -8,6 +8,7 @@ let passport = require('passport');
 let passportLocal = require('passport-local');
 let localstrategy = passportLocal.Strategy;
 let GitHubStrategy = require('passport-github2').Strategy;
+let GoogleStrategy = require('passport-google-oauth20').Strategy;
 let flash = require('connect-flash');
 
 let indexRouter = require('../routes/index');
@@ -56,14 +57,13 @@ passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
   callbackURL: process.env.GITHUB_CALLBACK_URL
-}, async function(accessToken, refreshToken, profile, done) {
+}, async (accessToken, refreshToken, profile, done) => {
   try {
-    
     let user = await User.findOne({ githubId: profile.id });
     if (!user) {
       user = await User.create({
         githubId: profile.id,
-        username: profile.username,
+        username: profile.displayName,
         displayName: profile.displayName,
         email: profile.emails,
         dateCreated: new Date()
@@ -72,6 +72,28 @@ passport.use(new GitHubStrategy({
     return done(null, user); 
   } catch (err) {
     return done(err); 
+  }
+}));
+
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
+}, async (accessToken, refreshToken, profile, cb) => {
+  try {
+    let user = await User.findOne({ googleId: profile.id });
+    if(!user) {
+      user = await User.create({
+        googleId: profile.id,
+        username: profile.displayName,
+        displayName: profile.displayName,
+        email: profile.emails,
+        dateCreated: new Date()
+      });
+    }
+    return cb(null, user);
+  } catch(err) {
+    return cb(err);
   }
 }));
 
