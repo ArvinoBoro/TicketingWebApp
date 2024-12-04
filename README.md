@@ -13,7 +13,7 @@ This is a second-year university project for Web and Script Programming at Ontar
 2. Navigate to the project root directory.
 3. Install Node JS if not already.
 4. Install all the dependencies defined in package.json by running "npm install" in the root directory. 
-5. Create .env at the root directory and insert the connection string provided by the owners. 
+5. Make .env at the root directory and insert the details provided by the project owners.
 5. Run the command "npm run start".
 6. Open a browser and enter "localhost:3000" in the URI bar (check your system for open ports and try those, if the site remains unreachable).
 

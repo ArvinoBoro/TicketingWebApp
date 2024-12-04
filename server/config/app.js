@@ -55,10 +55,10 @@ passport.deserializeUser(User.deserializeUser());
 passport.use(new GitHubStrategy({
   clientID: process.env.GITHUB_CLIENT_ID,
   clientSecret: process.env.GITHUB_CLIENT_SECRET,
-  callbackURL: 'http://127.0.0.1:3000/users/auth/github/callback' // What is the purpose of this callback?
+  callbackURL: process.env.GITHUB_CALLBACK_URI 
 }, async function(accessToken, refreshToken, profile, done) {
   try {
-    // Find or create the user in your database
+    
     let user = await User.findOne({ githubId: profile.id });
     if (!user) {
       user = await User.create({
@@ -69,9 +69,9 @@ passport.use(new GitHubStrategy({
         dateCreated: new Date()
       });
     }
-    return done(null, user); // Pass the user to the next step
+    return done(null, user); 
   } catch (err) {
-    return done(err); // Pass any errors
+    return done(err); 
   }
 }));
 
