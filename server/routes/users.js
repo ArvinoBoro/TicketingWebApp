@@ -64,8 +64,8 @@ router.get('/register', (req, res, next) => {
 router.post('/register', (req, res, next) => {
   let newUser = new User({
     username: req.body.username,
-    email:req.body.email,
-    displayName:req.body.displayName
+    email: req.body.email,
+    displayName: req.body.displayName
   });
   User.register(newUser, req.body.password, (err) => {
     if(err) {
@@ -80,10 +80,20 @@ router.post('/register', (req, res, next) => {
         });
     } else {
       return passport.authenticate('local')(req, res, () => {
-        res.redirect('/tickets')
+        res.redirect('/tickets');
       });
     }
   });
+});
+
+router.get('/auth/github',  
+  passport.authenticate('github', { scope: ['user.email']})
+);
+
+
+router.get('/auth/github/callback', 
+  passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
+    res.redirect('/tickets');
 });
 
 

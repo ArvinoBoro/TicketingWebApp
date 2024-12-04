@@ -7,6 +7,7 @@ let session = require('express-session');
 let passport = require('passport');
 let passportLocal = require('passport-local');
 let localstrategy = passportLocal.Strategy;
+let GitHubStrategy = require('passport-github2').Strategy;
 let flash = require('connect-flash');
 
 let indexRouter = require('../routes/index');
@@ -50,6 +51,29 @@ passport.use(new localstrategy(User.authenticate()));
 // serialize and deserialize user info
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+passport.use(new GitHubStrategy({
+  clientID: process.env.GITHUB_CLIENT_ID,
+  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  callbackURL: 'http://127.0.0.1:3000/users/auth/github/callback' // What is the purpose of this callback?
+}, async function(accessToken, refreshToken, profile, done) {
+  try {
+    // Find or create the user in your database
+    let user = await User.findOne({ githubId: profile.id });
+    if (!user) {
+      user = await User.create({
+        githubId: profile.id,
+        username: profile.username,
+        displayName: profile.displayName,
+        email: profile.emails,
+        dateCreated: new Date()
+      });
+    }
+    return done(null, user); // Pass the user to the next step
+  } catch (err) {
+    return done(err); // Pass any errors
+  }
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
