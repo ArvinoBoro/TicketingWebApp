@@ -73,7 +73,7 @@ passport.use(new GitHubStrategy({
   } catch (err) {
     return done(err); 
   }
-}));
+})); // External source: https://www.passportjs.org/packages/passport-github2/
 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -95,7 +95,7 @@ passport.use(new GoogleStrategy({
   } catch(err) {
     return cb(err);
   }
-}));
+})); // External source: https://www.passportjs.org/packages/passport-google-oauth20/
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
