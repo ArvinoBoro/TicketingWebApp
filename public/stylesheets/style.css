@@ -26,19 +26,19 @@ body {
   color: #fff !important;  /* White color for links */
   text-transform: uppercase;  /* Make text all uppercase for uniformity */
   padding: 10px 20px;  /* Adds padding for better button feel */
-  border-radius: 50px;  /* Round corners */
-  background-color: #28a745;  /* Green background */
+ border-radius: 10px;
+  background-color: #af7125;  /* Green background */
   transition: background-color 0.3s ease;  /* Smooth transition for background color change */
 }
 
 .navbar .nav-link:hover {
-  background-color: #218838 !important;  /* Darker green on hover */
+  background-color: #bf9355 !important;  /* Darker green on hover */
 }
 
 /* Active Navbar Item */
 .navbar .nav-item.active .nav-link {
   font-weight: bold;  /* Make the active navbar item bold */
-  background-color: #218838 !important;  /* Active green color */
+  background-color: #795e48 !important;  /* Active green color */
   color: #fff !important;
 }
 
