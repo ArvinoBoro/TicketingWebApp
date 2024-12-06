@@ -1,5 +1,6 @@
 <%- include ../partials/header.ejs %>
 <%- include ../partials/navbar.ejs %>
+<section>
 <main class="container">
     <% if (message.length > 0) { %>
     <div class="alert alter-danger">
@@ -26,9 +27,9 @@
                     id="password" required>
                     or
                     <a href="/users/register" style="text-decoration: none">Register Here</a> <br>
-                    <i class="fa-brands fa-github fa-lg"></i><a href="/users/auth/github" style="text-decoration: none">Login with Github</a> <br>
-                    <i class="fa-brands fa-google fa-lg"></i><a href="/users/auth/google" style="text-decoration: none">Login with Google</a>
-                    <i class="fa-brands fa-facebook fa-lg"></i><a href="#" style="text-decoration: none">Login with Facebook</a>
+                    <i class="fa-brands fa-github fa-lg"></i><a href="/users/auth/github" style="text-decoration: none"> Login with Github</a> <br>
+                    <i class="fa-brands fa-google fa-lg"></i><a href="/users/auth/google" style="text-decoration: none"> Login with Google</a>
+                    <i class="fa-brands fa-facebook fa-lg"></i><a href="#" style="text-decoration: none"> Login with Facebook</a>
                 </fieldset>
                 <fieldset class="form-group text-right">
                     <input type="submit" class="btn btn-success"
@@ -39,5 +40,6 @@
         </div>
     </div>
 </main>
+</section>
 <%- include ../partials/footer.ejs %>
 

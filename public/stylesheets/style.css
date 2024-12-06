@@ -12,11 +12,6 @@ body {
   margin-bottom: 40px;
 }
 
-/* Navbar */
-.navbar {
-  margin-bottom: 20px;
-}
-
 .navbar-nav {
   font-size: 16px;  /* Ensures text is readable */
 }
@@ -107,3 +102,39 @@ footer {
   max-width: 100%;
   height: auto;
 }
+
+#list{
+background-color: rgb(243, 166, 104);
+border-radius: 20px;
+border: 8px solid black;
+margin-left: 26%;
+margin-right: 26%;
+margin-top: 10px;
+width: 48%;
+height: 80%;
+padding: 1%;
+
+}
+
+#contact{
+background-color: rgb(243, 166, 104);
+border-radius: 20px;
+border: 8px solid black;
+margin-left: 26%;
+margin-right: 26%;
+margin-top: 10px;
+width: 48%;
+height: 80%;
+padding: 1%;
+  
+}
+section{
+background-color: rgb(243, 166, 104);
+border-radius: 20px;
+border: 8px solid black;
+margin-left: 26%;
+margin-right: 26%;
+width: 48%;
+height: 60%;
+margin-top: 10px;
+padding: 1%;}
