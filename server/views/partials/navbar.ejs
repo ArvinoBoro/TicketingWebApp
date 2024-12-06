@@ -1,68 +1,64 @@
 <!-- Navbar - Carson --> 
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/"> <i class="fa-solid fa-ticket"></i> Ticketing Web Application </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <% if(title=="Home") { %>
-              <a class="nav-link active" href="/">
-            <% } else {%>
-              <a class="nav-link" href="/">
-            <% } %>  
-            <i class="fa-solid fa-house"></i> Home </a>
+  <div class="container-fluid d-flex justify-content-center w-100">
+    <!-- Navbar links (home, contact, about, etc.) -->
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item ms-4">
+        <% if(title=="Home") { %>
+          <a class="nav-link active" href="/">
+        <% } else {%>
+          <a class="nav-link" href="/">
+        <% } %>  
+        <i class="fa-solid fa-house"></i> Home </a>
+      </li>
+      <li class="nav-item ms-4">
+        <% if(title=="Contact Us") { %>
+          <a class="nav-link active" href="/contact">
+        <% } else {%>
+          <a class="nav-link" href="/contact">
+        <% } %>  
+        <i class="fa-solid fa-address-book"></i> Contact Us</a>
+      </li>
+      <li class="nav-item ms-4">
+        <% if(title=="About Us") { %>
+          <a class="nav-link active" href="/about">
+        <% } else {%>
+          <a class="nav-link" href="/about">
+        <% } %>  
+        <i class="fa-solid fa-address-card"></i> About Us</a>
+      </li>
+      <% if(typeof displayName == 'string' && displayName) { %>
+      <li class="nav-item ms-4">
+        <% if(title=="List") { %>
+          <a class="nav-link active" href="/tickets">
+        <% } else {%>
+          <a class="nav-link" href="/tickets">
+        <% } %>  
+        <i class="fa-solid fa-ticket"></i> View Ticket List</a>
+      </li>
+      <li class="nav-item ms-4">
+        <% if(title=="Add") { %>
+          <a class="nav-link active" href="/tickets/add">
+        <% } else {%>
+          <a class="nav-link" href="/tickets/add">  
+        <% } %>       
+        <i class="fa-regular fa-square-plus"></i> Add Ticket</a>
+      </li>
+      <% } %>
+      <% if(typeof displayName == 'string' && displayName) { %>
+          <li class="navbar-text ms-4">
+          <i class="fas fa-lg fa-user"></i> Welcome, <%= displayName %> 
           </li>
-          <li class="nav-item">
-            <% if(title=="Contact Us") { %>
-              <a class="nav-link active" href="/contact">
-            <% } else {%>
-              <a class="nav-link" href="/contact">
-            <% } %>  
-            <i class="fa-solid fa-address-book"></i> Contact Us</a>
+          <li class="nav-item ms-4">
+          <a href="/users/logout" class="nav-link">
+          <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a>
           </li>
-          <li class="nav-item">
-            <% if(title=="Contact Us") { %>
-              <a class="nav-link active" href="/about">
-            <% } else {%>
-              <a class="nav-link" href="/about">
-            <% } %>  
-            <i class="fa-solid fa-address-card"></i> About Us</a>
-          </li>
-          <% if(typeof displayName == 'string' && displayName) { %>
-          <li class="nav-item">
-            <% if(title=="List") { %>
-              <a class="nav-link active" href="/tickets">
-            <% } else {%>
-              <a class="nav-link" href="/tickets">
-            <% } %>  
-            <i class="fa-solid fa-ticket"></i> View Ticket List</a>
-          </li>
-          <li class="nav-item">
-            <% if(title=="Add") { %>
-              <a class="nav-link active" href="/tickets/add">
-            <% } else {%>
-              <a class="nav-link" href="/tickets/add">  
-            <% } %>       
-            <i class="fa-regular fa-square-plus"></i>Add Ticket</a>
-          </li>
-          <% } %>
-          <% if(typeof displayName == 'string' && displayName) { %>
-              <li class="navbar-text">
-              <i class="fas fa-lg fa-user"></i>
-              Welcome, <%= displayName %> </li>
-              <li class="nav-item">
-              <a href ="/users/logout" class="nav-link">
-              <i class="fas fa-lg fa-sign-out-alt"></i> Logout</a> </li>
-              <% } else { %>
-              <li class="nav-item">
-                  <a href ="/users/login" class="nav-link">
-                  <i class="fas fa-lg fa-sign-in-alt"></i> Login</a> </li> 
-            <% } %>
-        </ul>
-      </div>
-    </div>
-  </nav>
+      <% } else { %>
+        <li class="nav-item ms-4">
+          <a href="/users/login" class="nav-link">
+          <i class="fas fa-lg fa-sign-in-alt"></i> Login</a> 
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
