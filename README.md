@@ -5,8 +5,7 @@ Thank you for visiting our GitHub repo!
 This is a second-year university project for Web and Script Programming at Ontario Tech University. 
 
 ## Project Status
-- Work in progress.
-- Hosted live at https://ticketingwebapp.onrender.com/
+Hosted live at https://ticketingwebapp.onrender.com/
 
 ## Instructions for Running Locally
 1. Open a terminal with elevated privileges.
